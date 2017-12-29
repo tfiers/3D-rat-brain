@@ -18,7 +18,9 @@ function setupViewer() {
 	renderer.setClearColor(0xffffff, 1);
 	adaptViewerToWindow();
 	document.body.appendChild(renderer.domElement);
-	onNewFrame();
+	let controls = new THREE.OrbitControls(camera, renderer.domElement);
+	controls.addEventListener('change', render);
+	render();
 }
 
 function adaptViewerToWindow() {
@@ -27,6 +29,10 @@ function adaptViewerToWindow() {
 	camera.aspect = w / h;	
 	camera.updateProjectionMatrix();
 	renderer.setSize(w, h);
+}
+
+function render() {
+	renderer.render(scene, camera);
 }
 
 function loadMeshes() {
@@ -40,10 +46,6 @@ function onLoad(geometry) {
 	let material = new THREE.MeshNormalMaterial();
 	let mesh = new THREE.Mesh(geometry, material);
 	scene.add(mesh);
-	console.log('Mesh added to scene')
+	render();
 }
 
-function onNewFrame() {
-	requestAnimationFrame(onNewFrame);
-	renderer.render(scene, camera);
-}
