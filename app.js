@@ -11,16 +11,17 @@ function setupViewer() {
 	scene = new THREE.Scene();
 	camera = new THREE.PerspectiveCamera();
 	renderer = new THREE.WebGLRenderer({antialias: true});
-	camera.fov = 20;
-	camera.position.set(-50, -20, -20);
+	camera.fov = 50;
+	camera.position.set(-24.1, 18.2, -31.9);
+	camera.rotation.set(-2.6, -0.54, -2.43);
 	camera.up = new THREE.Vector3(0, 0, 1);
 	camera.lookAt(new THREE.Vector3(0, -2, 2));
+	camera.zoom = 1.8;
 	renderer.setClearColor(0xffffff, 1);
-	adaptViewerToWindow();
 	document.body.appendChild(renderer.domElement);
 	let controls = new THREE.OrbitControls(camera, renderer.domElement);
 	controls.addEventListener('change', render);
-	render();
+	adaptViewerToWindow();
 }
 
 function adaptViewerToWindow() {
@@ -29,6 +30,7 @@ function adaptViewerToWindow() {
 	camera.aspect = w / h;	
 	camera.updateProjectionMatrix();
 	renderer.setSize(w, h);
+	render();
 }
 
 function render() {
