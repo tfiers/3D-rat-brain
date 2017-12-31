@@ -12,3 +12,4 @@ Many thanks to the authors:
 Eszter Papp, Lisa Kjonigsen, Evan Calabrese, G. Allan Johnson,  
 Sveinung Lillehaug, Menno Witter, Jan Bjaalie and Trygve Leergaard.
 
+See [data/README.md](data/README.md) for how the data was processed.
