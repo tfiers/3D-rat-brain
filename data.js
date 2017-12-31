@@ -1,4 +1,6 @@
-meshes = [
+'use strict';
+
+let meshes = [
   // // label  name                                                             R     G     B    alpha
   // [      1,  "Descending corticofugal pathways",                             255,   52,   39,     1],
   // [      2,  "Substantia nigra",                                             255,  186,    0,     1],
@@ -12,7 +14,7 @@ meshes = [
   // [     31,  "Globus pallidus",                                              255,  145,  186,     1],
   // [     32,  "Entopeduncular nucleus",                                        26,  231,  255,     1],
   // [     33,  "Ventricular system",                                             2,   44,  255,     1],
-  // [     34,  "Medial lemniscus",                                             212,  255,    0,     1],
+  [     34,  "Medial lemniscus",                                             212,  255,    0,     1],
   // [     35,  "Facial nerve",                                                   0,  176,   63,     1],
   // [     36,  "Anterior commissure, anterior part",                           124,  252,    0,     1],
   // [     37,  "Anterior commissure, posterior part",                          255,  186,    0,     1],
@@ -69,10 +71,10 @@ meshes = [
   // [     94,  "Pretectal region",                                             255,   87,   30,     1],
   // [     95,  "CA3",                                                          165,  131,  107,     1],
   // [     96,  "Dentate gyrus",                                                 91,   45,   10,     1],
-  [     97,  "CA2",                                                          255,  255,    0,     1],
+  // [     97,  "CA2",                                                          255,  255,    0,     1],
   // [     98,  "CA1",                                                          217,  104,   13,     1],
   // [     99,  "Fasciola cinereum",                                            255,   82,   82,     1],
-  [    100,  "Subiculum",                                                    255,  192,    0,     1],
+  // [    100,  "Subiculum",                                                    255,  192,    0,     1],
   // [    108,  "Postrhinal cortex",                                             40,  112,  130,     1],
   // [    109,  "Presubiculum",                                                  80,  123,  175,     1],
   // [    110,  "Parasubiculum",                                                 23,   54,   96,     1],
