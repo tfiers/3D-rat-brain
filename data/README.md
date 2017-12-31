@@ -17,3 +17,4 @@ See the [main Readme](/README.md) for a description of the data source.
    (using Quadric Edge Collapse Decimation) and smooths the resulting mesh
    (using [Taubin's algorithm](https://graphics.stanford.edu/courses/cs468-01-fall/Papers/taubin-smoothing.pdf)).
 6. Export the filtered meshes as binary `.STL` files.
+   The total file size of all meshes has now been reduced by a factor ~37 (from 3 GB to 80 MB).
