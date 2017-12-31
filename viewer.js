@@ -39,9 +39,10 @@ function render() {
 
 function loadMeshes() {
 	let loader = new THREE.STLLoader();
-	loader.load('data/CA1.stl', onLoad);
-	loader.load('data/Cerebellum.stl', onLoad);
-	loader.load('data/Olfactory bulb.stl', onLoad);
+	let fileNames = getFileNames();
+	fileNames.forEach((fileName) => {
+		loader.load(fileName, onLoad);
+	});
 }
 
 function onLoad(geometry) {
@@ -50,4 +51,3 @@ function onLoad(geometry) {
 	scene.add(mesh);
 	render();
 }
-
