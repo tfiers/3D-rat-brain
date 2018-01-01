@@ -1,8 +1,28 @@
 body {
-	margin: 0;
+  margin: 0;
+  font-family: monospace;
+  /* To get rid of a mistery margin/padding 
+     at the bottom of the page: */
+  overflow: hidden;
 }
 
-canvas {
-	width: 100%;
-	height: 100%;
+#atlas-app {
+  display: flex;
+  height: 100vh;
+}
+
+#viewer {
+  flex: 1;
+}
+
+#structure-list {
+  background-color: #EEE;
+  width: 20em;
+  overflow: scroll;
+  white-space: nowrap;
+}
+
+#structure-list > ul {
+  list-style-type: none;
+  padding-left: 1em;
 }

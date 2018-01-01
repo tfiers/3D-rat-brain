@@ -1,11 +1,8 @@
 'use strict';
 
-let scene, camera, renderer;
+let container, scene, camera, renderer;
 
-setupViewer();
-loadMeshes();
-
-window.addEventListener('resize', adaptViewerToWindow);
+let meshes = {};
 
 function setupViewer() {
   scene = new THREE.Scene();
@@ -18,16 +15,19 @@ function setupViewer() {
   camera.lookAt(new THREE.Vector3(0, -2, 2));
   camera.zoom = 1.8;
   renderer.setClearColor(0xffffff, 1);
-  document.body.appendChild(renderer.domElement);
+  container = document.getElementById('viewer');
+  container.appendChild(renderer.domElement);
+  window.addEventListener('resize', resizeViewer);
   let controls = new THREE.OrbitControls(camera, renderer.domElement);
   controls.addEventListener('change', render);
-  adaptViewerToWindow();
+  resizeViewer();
+  updateMeshes();
 }
 
-function adaptViewerToWindow() {
-  let w = window.innerWidth;
-  let h = window.innerHeight;
-  camera.aspect = w / h;  
+function resizeViewer() {
+  let w = container.offsetWidth;
+  let h = container.offsetHeight;
+  camera.aspect = w / h;
   camera.updateProjectionMatrix();
   renderer.setSize(w, h);
   render();
@@ -37,17 +37,41 @@ function render() {
   renderer.render(scene, camera);
 }
 
-function loadMeshes() {
-  let loader = new THREE.STLLoader();
-  let fileNames = getFileNames();
-  fileNames.forEach((fileName) => {
-    loader.load(fileName, onLoad);
-  });
+function getMesh(structure) {
+  return meshes[structure.ID];
 }
 
-function onLoad(geometry) {
+function updateMeshes() {
+  // `structures` is defined in data.js
+  structures.forEach((structure) => {
+    let mesh = getMesh(structure);
+    if (mesh) {
+      mesh.visible = structure.visible;
+    }
+    else if (structure.visible && !structure.loading) {
+      loadMesh(structure);
+    }
+  });
+  render();
+}
+
+function loadMesh(structure) {
+  let loader = new THREE.STLLoader();
+  let onLoad = (geometry) => {
+    addMesh(structure, geometry);
+  }
+  structure.loading = true;
+  loader.load(structure.filename, onLoad);
+}
+
+function addMesh(structure, geometry) {
   let material = new THREE.MeshNormalMaterial();
   let mesh = new THREE.Mesh(geometry, material);
+  // We do not store the mesh in the structure object,
+  // as Vue would then crash trying to see if this
+  // object has changed.
+  meshes[structure.ID] = mesh;
   scene.add(mesh);
   render();
+  structure.loading = false;
 }
