@@ -2,7 +2,7 @@
 
 An in-browser visualisation of different structures in the rat brain.
 
-[Go to website](https://tfiers.github.io/3D-rat-brain)
+[👉 Go to website](https://tfiers.github.io/3D-rat-brain)
 
 The data is from
  - [Papp et al. 2014](https://www.sciencedirect.com/science/article/pii/S1053811914002419)
