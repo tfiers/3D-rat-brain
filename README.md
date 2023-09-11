@@ -14,9 +14,14 @@ Controls:
 - left mouse to rotate
 - scroll to zoom
 
-<br>
+---
 
-The data is from
+For a much more detailed anatomical ontology (though for the mouse brain), and a more advanced interface,
+see the Allen Brain Explorer: https://connectivity.brain-map.org/3d-viewer
+
+---
+
+The data here is from
  - [Papp et al. 2014](https://www.sciencedirect.com/science/article/pii/S1053811914002419)
  - [Kjonigsen et al. 2015](https://www.sciencedirect.com/science/article/pii/S105381191500004X)
 
