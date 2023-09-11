@@ -2,13 +2,19 @@
 
 An in-browser visualisation of different structures in the rat brain.
 
-[**👉 Go to website**](https://tfiers.github.io/3D-rat-brain)
-
-Some bigger structures (like the cerebellum) take a while to load.
+[**👉 Go to web-app**](https://tfiers.github.io/3D-rat-brain)
 
 Preview:
 ![image](https://github.com/tfiers/3D-rat-brain/assets/3773558/583a5cd6-19b2-461c-ac3d-58a795938975)
 
+Controls:
+- click structures on the right to show/hide them
+  - Some bigger structures (like the cerebellum) take a while to load.
+- right mouse to pan
+- left mouse to rotate
+- scroll to zoom
+
+<br>
 
 The data is from
  - [Papp et al. 2014](https://www.sciencedirect.com/science/article/pii/S1053811914002419)
