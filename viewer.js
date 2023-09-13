@@ -42,16 +42,18 @@ function getMesh(structure) {
 }
 
 function updateMeshes() {
-  // `structures` is defined in data.js
-  structures.forEach((structure) => {
-    let mesh = getMesh(structure);
-    if (mesh) {
-      mesh.visible = structure.visible;
-    }
-    else if (structure.visible && !structure.loading) {
-      loadMesh(structure);
-    }
-  });
+  // `ontology_parsed` is defined in data.js
+  ontology_parsed.forEach((group) => {
+    group.structures.forEach((structure) => {
+        let mesh = getMesh(structure);
+        if (mesh) {
+          mesh.visible = structure.visible;
+        }
+        else if (structure.visible && !structure.loading) {
+          loadMesh(structure);
+        }
+      });
+  })
   render();
 }
 

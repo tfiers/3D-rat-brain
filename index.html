@@ -6,24 +6,37 @@
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-  <!-- Attributes with the prefix "v-" are
+  <!-- Attributes with the prefix "v-", `:`, or `@` are
        parsed by the JavaScript UI framework "Vue".
        See: https://vuejs.org
   -->
   <div id="atlas-app">
     <div id="viewer"></div>
-    <div id="structure-list">
+    <div id="sidebar">
       <!-- Make a list of brain structures, to allow
            the user to choose the ones to display.
       -->
-      <ul>
-        <li v-for="s in structures">
-          <input type="checkbox"
-                 v-bind:id="'checkbox-' + s.ID"
-                 v-model="s.visible">
-          <label v-bind:for="'checkbox-' + s.ID">
-            {{ s.title }}
-          </label>
+      <ul id="ontology">
+        <li class="group" v-for="group in ontology">
+            <input type="checkbox"
+                   v-model="group.visible"
+                   @click="group.structures.forEach((s)=>{s.visible=!group.visible})">
+                   <!-- `NOT`, cause the @click happens before the v-model update -->
+            <span :class="{ withChildren: !group.singleton,
+                            open: !group.collapsed }"
+                   @click="group.collapsed = !group.collapsed">
+                {{ group.name }}
+            </span>
+            <ul v-if="!group.collapsed && !group.singleton">
+                <li v-for="struct in group.structures">
+                    <input type="checkbox"
+                           :id="'checkbox-struct-' + struct.name"
+                           v-model="struct.visible">
+                    <label :for="'checkbox-struct-' + struct.name">
+                        {{ struct.name }}
+                    </label>
+                </li>
+            </ul>
         </li>
       </ul>
     </div>

@@ -1,7 +1,7 @@
 body {
   margin: 0;
   font-family: monospace;
-  /* To get rid of a mistery margin/padding 
+  /* To get rid of a mistery margin/padding
      at the bottom of the page: */
   overflow: hidden;
 }
@@ -15,14 +15,30 @@ body {
   flex: 1;
 }
 
-#structure-list {
+#sidebar {
   background-color: #EEE;
   width: 20em;
   overflow: scroll;
   white-space: nowrap;
 }
 
-#structure-list > ul {
+#ontology {
   list-style-type: none;
   padding-left: 1em;
+}
+
+#ontology > .group > span {
+    cursor: pointer;
+}
+#ontology > .group > span::before {
+    content: "·";
+}
+#ontology > .group > span.withChildren::before {
+    content: "▸";
+}
+#ontology > .group > span.withChildren.open::before {
+    content: "▾";
+}
+#ontology > .group > ul {
+    list-style-type: none;
 }

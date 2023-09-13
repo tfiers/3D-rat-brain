@@ -3,12 +3,11 @@
 let atlasApp = new Vue({
   el: "#atlas-app",
   data: {
-    structures: structures,   // Defined in data.js
+    ontology: ontology_parsed, // Defined in data.js
   },
   mounted: setupViewer,       // Defined in viewer.js
   watch: {
-    structures: {
-
+    ontology: {
       handler: updateMeshes,  // Also defined in viewer.js
       deep: true,
     },
